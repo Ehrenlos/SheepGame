@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://entities/player/player.gd" type="Script" id=1]
+[ext_resource path="res://entities/player/sprite/sheep1.png" type="Texture" id=2]
+[ext_resource path="res://entities/player/sprite/sheep2.png" type="Texture" id=3]
+[ext_resource path="res://entities/player/sprite/sheep3.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 2
+script = ExtResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0.5, 0.5 )
+rotation = 1.5708
+polygon = PoolVector2Array( 6.36718, 4.36107, 6.32537, -3.43599, 2.44227, -7.43989, -4.29083, -7.43989, -7.44767, -3.35015, -7.44767, 4.42851, -4.35884, 7.45453, 2.40826, 7.45453 )
